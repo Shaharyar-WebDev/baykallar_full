@@ -28,3 +28,9 @@ Route::get('/command/{command}', function($command){
 
     
 });
+
+
+Route::view('/login', 'auth.login');
+Route::view('/register', 'auth.register');
+Route::view('/verify', 'auth.email-verify');
+
