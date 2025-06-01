@@ -5,11 +5,11 @@
     <div class="glass-card w-full max-w-md rounded-xl overflow-hidden">
         <div class="p-8">
             <!-- Header with Logo -->
-            <div class="flex flex-col items-center mb-8">
-                <img src="{{ Storage::url('logo/logo.webp') }}"
+          <div class="flex flex-col items-center mb-8">
+                <img loading="lazy" src="{{ asset('/storage/logo/logo.webp') }}"
                     class="bg-transparent w-44 text-white rounded-lg flex items-center justify-center mb-4">
                 <h1 class="text-2xl font-bold text-slate-800">{{ config('app.name') }}</h1>
-                <p class="text-slate-500 mt-1">Create your account</p>
+                <p class="text-slate-500 mt-1">Welcome Back!</p>
             </div>
 
             <!-- Registration Form -->

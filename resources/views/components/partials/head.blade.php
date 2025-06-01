@@ -10,6 +10,7 @@
             background: linear-gradient(135deg, #f0f2f5 0%, #e4e7eb 100%);
         }
     </style>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    
 </head>
