@@ -16,7 +16,7 @@
         }
     </style>
 
-<body class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-50 to-slate-100">
+<body class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-neutral-900 dark:to-neutral-900">
     
     @yield('main')
 

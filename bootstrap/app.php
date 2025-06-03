@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\lang\LocaleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,6 +13,14 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        // $middleware->append([
+        //     LocaleMiddleware::class
+        // ]);
+
+        $middleware->alias([
+            'locale' => LocaleMiddleware::class
+        ]);
+        
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
