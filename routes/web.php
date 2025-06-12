@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\System\LocaleController;
+use App\Livewire\Auth\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +15,8 @@ use Illuminate\Support\Facades\Artisan;
     
     
     Route::get('/home', function () {
-        // Auth::logout();
         return dd(Auth::user()->name, Auth::user()->id, Auth::user()->email);
-    });
+    })->name('home');
     
     
     });
@@ -48,3 +48,10 @@ Route::get('/', function () {
     });
 
     Route::get('/locale/{locale}', [LocaleController::class, 'setLocale'])->name('locale');
+
+    Route::group([
+        'middleware' => ['locale'],
+        'prefix' => '/admin'
+    ], function(){
+        Route::get('/login', Login::class);
+    });

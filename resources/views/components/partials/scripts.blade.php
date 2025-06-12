@@ -1,35 +1,68 @@
-<!-- Preline UI Script -->
-<script src="./assets/vendor/preline/dist/preline.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js" integrity="sha512-bUg5gaqBVaXIJNuebamJ6uex//mjxPk8kljQTdM1SwkNrQD7pjS+PerntUSD+QRWPNJ0tq54/x4zRV8bLrLhZg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
+{{-- <script>
+    document.addEventListener('livewire:navigated', function(){
+        console.log('sadasds');
+        try{
+            function makeKeyboardNavigable(container, options = {}) {
+    const children = [...container.children].filter(el => el instanceof HTMLElement);
+    let currentIndex = -1;
 
-     document.addEventListener('DOMContentLoaded', () => {
+    const onSelect = options.onSelect || ((el) => el.click?.());
+    const onEscape = options.onEscape || (() => {});
+    const activeClass = options.activeClass || 'bg-gray-200';
+    const loop = options.loop ?? true;
 
-          NProgress.start();
-          NProgress.done();
+    const resetFocus = () => {
+        children.forEach(el => el.classList.remove(activeClass));
+    };
 
-          const forms = document.querySelectorAll("form");
-          document.querySelectorAll('a').forEach(link => {
-               link.onclick = () => {
-                    NProgress.start();
-               }
-          });
+    const updateFocus = () => {
+        resetFocus();
+        if (children[currentIndex]) {
+            children[currentIndex].classList.add(activeClass);
+            children[currentIndex].focus?.();
+        }
+    };
 
-          forms.forEach(form => {
-               const formBtns = form.querySelectorAll('button[type="submit"], input[type="submit"]');
-               form.addEventListener('submit', () => {
+    container.addEventListener('keydown', (e) => {
+        const maxIndex = children.length - 1;
 
-                    NProgress.start();
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            currentIndex = (currentIndex + 1 > maxIndex)
+                ? (loop ? 0 : maxIndex)
+                : currentIndex + 1;
+            updateFocus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            currentIndex = (currentIndex - 1 < 0)
+                ? (loop ? maxIndex : 0)
+                : currentIndex - 1;
+            updateFocus();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentIndex >= 0) {
+                onSelect(children[currentIndex], currentIndex);
+            }
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            onEscape();
+        }
+    });
 
-                    formBtns.forEach(btn => {
-                         btn.disabled = true;
-                         btn.innerHTML = ` <span class="animate-spin inline-block size-4 border-3 border-current border-t-transparent text-white rounded-full" role="status" aria-label="submitting"></span>
-  Submitting...`;
-                    });
+    children.forEach((el, idx) => {
+        el.setAttribute('tabindex', '0');
 
-               });
-          });
+        el.addEventListener('mouseenter', () => {
+            currentIndex = idx;
+            updateFocus();
+        });
 
-     });
-</script>
-@livewireScripts
+        el.addEventListener('click', () => onSelect(el, idx));
+    });
+}
+
+        }catch(e){
+            console.warn('Error' + e)
+        }
+    })
+</script> --}}

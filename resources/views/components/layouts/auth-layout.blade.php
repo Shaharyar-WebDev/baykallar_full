@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-partials.head></x-partials.head>
+<x-partials.auth.head></x-partials.auth.head>
 
  <style>
         .glass-card {
@@ -20,7 +20,7 @@
     
     @yield('main')
 
-    <x-partials.scripts></x-partials.scripts>
+    <x-partials.auth.scripts></x-partials.auth.scripts>
 
 </body>
 </html>
