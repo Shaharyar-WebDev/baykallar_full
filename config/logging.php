@@ -52,6 +52,25 @@ return [
 
     'channels' => [
 
+        'admin_login' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/admin-logins.log'),
+            'level' => 'info',
+            'days' => 30,
+        ],
+
+        'failed_admin_logins' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/failed-admin-logins.log'),
+            'level' => 'warning',
+            'days' => 30,
+        ],
+        'navbar_layout' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/navbar-layout.log'),
+            'level' => 'info',
+            'days' => 60,
+        ],
         'stack' => [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),
@@ -89,7 +108,7 @@ return [
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
                 'port' => env('PAPERTRAIL_PORT'),
-                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://' . env('PAPERTRAIL_URL') . ':' . env('PAPERTRAIL_PORT'),
             ],
             'processors' => [PsrLogMessageProcessor::class],
         ],

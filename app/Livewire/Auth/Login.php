@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class Login extends Component
 {
-       public string $email = '';
+    public string $email = '';
     public string $password = '';
     public bool $remember = false;
 
@@ -34,7 +34,7 @@ class Login extends Component
          RateLimiter::hit($throttleKey, 60);
 
              if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            Log::warning('Failed Admin login attempt', [
+            Log::channel('failed_admin_logins')->warning('Failed Admin login attempt', [
                 'email' => $this->email,
                 'ip' => request()->ip(),
                 'user_agent' => request()->userAgent(),
@@ -48,7 +48,7 @@ class Login extends Component
            RateLimiter::clear($throttleKey);
 
            
-        Log::info('Successful Admin login', [
+        Log::channel('admin_login')->info('Successful Admin login', [
             'user_id' => Auth::id(),
             'ip' => request()->ip(),
             'user_agent' => request()->userAgent(),
@@ -56,8 +56,8 @@ class Login extends Component
 
         session()->regenerate();
         
-        return redirect(route('home'));
-        // dd($this->email, $this->password, $this);
+        return redirect(route('admin.home'));
+  
     }
 
     public function render()

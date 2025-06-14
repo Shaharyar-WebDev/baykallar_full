@@ -1,9 +1,9 @@
 <nav class="upper">
-    <nav class="flex bg-gray-950 dark:bg-white justify-around items-center">
+    <nav class="flex bg-gray-950 justify-around items-center">
         <div class="hidden md:flex space-x-8 justify-center px-2 py-2 text-white">
-            <a href="#" class="link">About Us</a>
-            <a href="#" class="link">Contact</a>
-            <a href="#" class="link">shery.codes@gmail.com</a>
+            <a href="#" class="upper-nav-link dark:!text-white">About Us</a>
+            <a href="#" class="upper-nav-link dark:!text-white">Contact</a>
+            <a href="#" class="upper-nav-link dark:!text-white">shery.codes@gmail.com</a>
         </div>
 
         <div class="hidden md:flex space-x-8 justify-center px-2 py-2 text-white">

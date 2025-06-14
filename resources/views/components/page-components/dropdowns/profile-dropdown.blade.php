@@ -20,7 +20,7 @@
         </a>
         <a href="#"
             class="m-1 rounded-md px-4 py-2 text-start text-gray-950 hover:bg-gray-950 hover:text-white transition-all">
-            Logot
+            Logout
         </a>
     </x-slot:links>
 </x-page-components.dropdown>

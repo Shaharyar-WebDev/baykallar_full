@@ -1,10 +1,7 @@
 @section('title', 'Login')
 
-@push('styles')
- 
-@endpush
 <div>
-    <section id="login" class="bg-white dark:bg-neutral-900 h-[100vh] w-full flex justify-center items-center grid-pattern bg-[position:0_calc(--spacing(4)*-1)]">
+    <section id="login" class="bg-white text-gray-900 dark:bg-neutral-900 h-[100vh] w-full flex justify-center items-center grid-pattern bg-[position:0_calc(--spacing(4)*-1)]">
         <form  wire:submit.prevent="authenticate" class="w-full bg-white px-4 py-8 rounded-sm md:w-96 border border-gray-300">
             <div class="text-center mb-4">
                 <h1 class="text-center text-2xl mb-2 font-bold">{{__('Log In')}}</h1>
@@ -52,7 +49,7 @@
                     @enderror
                 </label>
             </div>
-            <x-page-components.button class="w-full" type="submit">
+            <x-page-components.button class="w-full" wire_loading="true"  type="submit">
                 {{__('form-labels.login')}}
             </x-page-components.button>
         </form>

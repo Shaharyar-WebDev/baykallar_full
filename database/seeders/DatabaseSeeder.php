@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Database\Seeders\NavbarSeeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
         User::factory()->create([
             'name' => 'Test User',
@@ -28,12 +29,28 @@ class DatabaseSeeder extends Seeder
             'password' => '12345678',
         ]);
 
+        $user2 = User::create([
+            'name' => 'Shaharyar12',
+            'email' => 'ahmedshaharyar00@gmail.com',
+            'password' => '12345678',
+        ]);
+
         $user->markEmailAsVerified();
+        $user2->markEmailAsVerified();
+
 
         $role = Role::create(['name' => 'admin']);
+        $role2 = Role::create(['name' => 'manager']);
         $permission = Permission::create(['name' => 'administration']);
-        $role->givePermissionTo($permission);
+        $permission2 = Permission::create(['name' => 'accounts']);
+
+        $role->givePermissionTo([$permission, $permission2]);
+        $role2->givePermissionTo($permission2);
         $user->assignRole($role);
+        $user2->assignRole($role2);
+        $this->call([
+            NavbarSeeder::class
+        ]);
         
     }
 }
